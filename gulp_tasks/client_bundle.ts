@@ -1,7 +1,7 @@
 var async = require('async');
 var path = require('path');
 var Builder = require('systemjs-builder');
-import {ENV, CLIENT_JS_DEST, SYSTEM_CONFIG_BUILDER} from './config';
+import {ENV, CLIENT_LIB_DEST, SYSTEM_CONFIG_BUILDER} from './config';
 
 const BUNDLE_OPTS = {
     minify: true,
@@ -21,7 +21,7 @@ export = function client_bundle(gulp, plugins) {
             function bundleApp(done) {
                 builder.bundle(
                     'bootstrap - angular2/*',
-                    path.join(CLIENT_JS_DEST, 'app.js'), BUNDLE_OPTS).then(done);
+                    path.join(CLIENT_LIB_DEST, 'app.js'), BUNDLE_OPTS).then(done);
             }
         }
     };

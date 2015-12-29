@@ -24,3 +24,4 @@
 /// <reference path="gulp-tslint/gulp-tslint.d.ts" />
 /// <reference path="merge-stream/merge-stream.d.ts" />
 /// <reference path="run-sequence/run-sequence.d.ts" />
+/// <reference path="gulp-inject/gulp-inject.d.ts" />

@@ -1,6 +1,6 @@
 import merge = require('merge-stream');
 import {join} from 'path';
-import {ENV, CLIENT_SRC, CLIENT_DEST, CLIENT_FONTS_DEST, CLIENT_JS_DEST, NPM_FONTS, TMP_DIR} from './config';
+import {ENV, CLIENT_SRC, CLIENT_DEST, CLIENT_FONTS_DEST,  NPM_FONTS, TMP_DIR} from './config';
 
 export = function client_copy(gulp, plugins) {
     return function () {
@@ -8,19 +8,19 @@ export = function client_copy(gulp, plugins) {
 
         function copyHtml() {
             return gulp
-                .src(join(CLIENT_SRC, '**/*.html'))
+                .src(join(CLIENT_SRC, '**/*.html'), { read: false })
                 .pipe(ENV === 'dev' ? gulp.dest(CLIENT_DEST) : gulp.dest(TMP_DIR));
         }
 
         function copyCss() {
             return gulp
-                .src(join(CLIENT_SRC, '**/*.css'))
+                .src(join(CLIENT_SRC, '**/*.css'), { read: false })
                 .pipe(ENV === 'dev' ? gulp.dest(CLIENT_DEST) : gulp.dest(TMP_DIR));
         }
 
         function copyNpmFonts() {
             return gulp
-                .src(NPM_FONTS)
+                .src(NPM_FONTS, { read: false })
                 .pipe(plugins.flatten())
                 .pipe(ENV === 'dev' ? gulp.dest(CLIENT_FONTS_DEST) : gulp.dest(TMP_DIR));
         }

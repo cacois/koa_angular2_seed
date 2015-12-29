@@ -76,6 +76,9 @@
     },
     "run-sequence/run-sequence.d.ts": {
       "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
+    },
+    "gulp-inject/gulp-inject.d.ts": {
+      "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
     }
   }
 }
