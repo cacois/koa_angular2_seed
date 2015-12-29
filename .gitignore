@@ -3,4 +3,8 @@
 .idea/
 
 ### Node
-node_modules
+node_modules/
+
+### Build Stuff
+tmp/
+dist/
