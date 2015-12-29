@@ -3,7 +3,7 @@ import yargs = require('yargs');
 export const ENV = yargs.argv['env'] || 'dev';
 export const GULP_TASKS_SRC = `./gulp_tasks/`;
 export const TMP_DIR = 'tmp';
-export const TMP_SRC = 'tmp/**/*';
+export const TMP_SRC = 'tmp/index.html';
 export const APP_TITLE = `Koa Angular 2.0 Seed`;
 export const APP_BASE = `/`;
 export const APP_DEST = `dist/`;
@@ -45,7 +45,7 @@ const SYSTEM_CONFIG_DEV = {
 const SYSTEM_CONFIG_PROD = {
     defaultJSExtensions: true,
     bundles: {
-        'js/app': ['bootstrap']
+        'lib/app': ['bootstrap']
     }
 };
 
