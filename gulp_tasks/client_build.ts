@@ -3,7 +3,7 @@ import util = require('gulp-util');
 import {ENV, TMP_DIR, CLIENT_SRC, CLIENT_DEST} from './config';
 
 export = function client_build(gulp, plugins, option) {
-    let tsProject = plugins.typescript.createProject('tsconfig.json', {
+    let tsProject = plugins.typescript.createProject('tsconfig.client.json', {
         typescript: require('typescript')
     });
 

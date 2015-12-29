@@ -17,6 +17,7 @@ export const CLIENT_NODE_MODULES_SRC = ['node_modules/**/*.js'];
 export const CLIENT_NODE_MODULES_DEST = `${CLIENT_DEST}/node_modules`;
 
 export const SERVER_SRC = `server/`;
+export const SERVER_DEST = `dist/`;
 
 export const NPM_FONTS = [
     'node_modules/bootstrap-sass/assets/fonts/bootstrap/*.*',
