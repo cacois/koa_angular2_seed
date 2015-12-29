@@ -1,7 +1,7 @@
 var async = require('async');
 var path = require('path');
 var Builder = require('systemjs-builder');
-import {CLIENT_JS_DEST, SYSTEM_CONFIG_BUILDER} from './config';
+import {ENV, CLIENT_JS_DEST, SYSTEM_CONFIG_BUILDER} from './config';
 
 const BUNDLE_OPTS = {
     minify: true,
@@ -11,14 +11,18 @@ const BUNDLE_OPTS = {
 
 export = function client_bundle(gulp, plugins) {
     return function (done) {
-        let builder = new Builder(SYSTEM_CONFIG_BUILDER);
+        if (ENV === 'dev') {
+            done();
+        } else {
+            let builder = new Builder(SYSTEM_CONFIG_BUILDER);
 
-        async.parallel([bundleApp], () => done());
+            async.parallel([bundleApp], () => done());
 
-        function bundleApp(done) {
-            builder.bundle(
-                'bootstrap - angular2/*',
-                path.join(CLIENT_JS_DEST, 'app.js'), BUNDLE_OPTS).then(done);
+            function bundleApp(done) {
+                builder.bundle(
+                    'bootstrap - angular2/*',
+                    path.join(CLIENT_JS_DEST, 'app.js'), BUNDLE_OPTS).then(done);
+            }
         }
     };
 };
