@@ -1,0 +1,50 @@
+{
+  "name": "koa_angular2_seed",
+  "version": "1.0.0",
+  "scripts": {
+    "build.dev": "gulp build --env dev",
+    "build.release": "gulp build --env release"
+  },
+  "author": "Henry Zektser <japhar81@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.0",
+    "es6-module-loader": "^0.17.9",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.0",
+    "systemjs": "^0.19.9",
+    "zone.js": "^0.5.10"
+  },
+  "devDependencies": {
+    "async": "^1.5.0",
+    "bootstrap-sass": "^3.3.6",
+    "chalk": "^1.1.1",
+    "del": "^2.2.0",
+    "font-awesome": "^4.5.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-flatten": "^0.2.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-inline-ng2-template": "0.0.9",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-shell": "^0.5.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^4.2.2",
+    "gulp-tslint-stylish": "^1.1.1",
+    "gulp-typescript": "^2.10.0",
+    "gulp-util": "^3.0.7",
+    "merge-stream": "^1.0.0",
+    "run-sequence": "^1.1.5",
+    "systemjs-builder": "^0.14.15",
+    "ts-node": "^0.5.5",
+    "tsd": "^0.6.5",
+    "tslint": "^3.2.1",
+    "typescript": "^1.7.5",
+    "typescript-register": "^1.1.0",
+    "yargs": "^3.31.0"
+  }
+}
