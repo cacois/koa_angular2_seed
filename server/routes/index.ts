@@ -22,6 +22,6 @@ module.exports = (api: any) => {
     });
 
     api.get('/hello', function *(next): any {
-        this.body = '<html><body><h1>test</h1></body></html>';
+        this.body = '<html><body><h1>test 123</h1></body></html>';
     });
 };

@@ -24,6 +24,8 @@ export const CLIENT_POST_BUILD_CLEANUP = [
 export const SERVER_SRC = `server/`;
 export const SERVER_DEST = `dist/`;
 
+export const NODEMON_SCRIPT = `${SERVER_DEST}/server.js`;
+
 export const NPM_FONTS = [
     'node_modules/bootstrap-sass/assets/fonts/bootstrap/*.*',
     'node_modules/font-awesome/fonts/*.*'
