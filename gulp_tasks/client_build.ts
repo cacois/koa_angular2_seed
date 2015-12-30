@@ -25,7 +25,7 @@ export = function client_build(gulp, plugins, option) {
 
         let result = gulp.src(src)
             .pipe(ENV === 'dev' ? plugins.sourcemaps.init() : util.noop())
-            .pipe(ENV === 'dev' ? plugins.inlineNg2Template({base: CLIENT_SRC}) : util.noop())
+            .pipe(ENV !== 'dev' ? plugins.inlineNg2Template({base: CLIENT_SRC}) : util.noop())
             .pipe(plugins.typescript(tsProject));
 
         result.js
