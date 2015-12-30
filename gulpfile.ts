@@ -40,6 +40,20 @@ gulp.task('server:build', function(cb) {
     );
 });
 
+gulp.task('build', function(cb) {
+    runSequence(
+        'clean',
+        'tslint',
+        'client_sass',
+        'client_deps',
+        'client_copy',
+        'client_build',
+        'client_post_build',
+        'client_inject',
+        'server_build'
+    );
+});
+
 function task(taskname: string, option?: string) {
     util.log(
         'Loading task',

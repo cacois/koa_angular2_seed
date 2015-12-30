@@ -25,3 +25,5 @@
 /// <reference path="../node_modules/definition-header/dist/index.d.ts" />
 /// <reference path="../node_modules/reflect-metadata/reflect-metadata.d.ts" />
 /// <reference path="../node_modules/tslint/lib/tslint.d.ts" />
+/// <reference path="browser-sync/browser-sync.d.ts" />
+/// <reference path="chokidar/chokidar.d.ts" />
