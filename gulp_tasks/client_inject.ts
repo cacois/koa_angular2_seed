@@ -1,6 +1,5 @@
-import util = require('gulp-util');
 import path = require('path');
-import {ENV, CLIENT_SRC, CLIENT_DEST, CLIENT_CSS_DEST, TMP_DIR, NPM_DEPENDENCIES, templateLocals} from './config';
+import {CLIENT_SRC, CLIENT_DEST, CLIENT_CSS_DEST, NPM_DEPENDENCIES, templateLocals} from './config';
 
 export = function client_inject(gulp, plugins, option) {
     return () => {

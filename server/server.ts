@@ -1,3 +1,4 @@
+///<
 'use strict';
 
 import koa = require('koa');
@@ -6,12 +7,11 @@ import router = require('koa-router');
 import koaqs = require('koa-qs');
 import accesslog = require('koa-accesslog');
 
-var Routes = require('./routes');
+console.log(koa);
 
-var app = koa();
-var api = router();
-
-new Routes(api);
+var app:any = koa();
+var api:any = router();
+require('./routes')(api);
 
 app
     .use(accesslog())

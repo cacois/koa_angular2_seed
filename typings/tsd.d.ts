@@ -19,7 +19,6 @@
 /// <reference path="orchestrator/orchestrator.d.ts" />
 /// <reference path="q/Q.d.ts" />
 /// <reference path="run-sequence/run-sequence.d.ts" />
-/// <reference path="systemjs/systemjs.d.ts" />
 /// <reference path="through2/through2.d.ts" />
 /// <reference path="vinyl/vinyl.d.ts" />
 /// <reference path="yargs/yargs.d.ts" />

@@ -1,5 +1,5 @@
 import merge = require('merge-stream');
-import {ENV, TMP_DIR, CLIENT_LIB_DEST, NPM_DEPENDENCIES} from './config';
+import {CLIENT_LIB_DEST, NPM_DEPENDENCIES} from './config';
 
 export = function client_deps(gulp, plugins) {
     return function () {
@@ -13,7 +13,7 @@ export = function client_deps(gulp, plugins) {
 
         function addStream(dep) {
             let stream = gulp.src(dep.src);
-            stream.pipe(ENV === 'dev' ? gulp.dest(CLIENT_LIB_DEST) : gulp.dest(TMP_DIR));
+            stream.pipe(gulp.dest(CLIENT_LIB_DEST));
             return stream;
         }
     };

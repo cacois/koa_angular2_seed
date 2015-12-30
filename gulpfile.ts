@@ -12,29 +12,29 @@ gulp.task('tslint', [], task('tslint'));
 
 gulp.task('client_sass', [], task('client_sass'));
 gulp.task('client_deps', [], task('client_deps'));
-gulp.task('client_build', [], task('client_build'));
-gulp.task('client_bundle', [], task('client_bundle'));
 gulp.task('client_copy', [], task('client_copy'));
+gulp.task('client_build', [], task('client_build'));
+gulp.task('client_post_build', [], task('client_post_build'));
 gulp.task('client_inject', [], task('client_inject'));
-gulp.task('client_node_modules', [], task('client_node_modules'));
 
 gulp.task('server_build', [], task('server_build'));
 
 gulp.task('client:build', function(cb) {
     runSequence(
-        'client_sass',
+        'clean',
         'tslint',
+        'client_sass',
         'client_deps',
         'client_copy',
         'client_build',
-        'client_bundle',
-        'client_inject',
-        'client_node_modules'
+        'client_post_build',
+        'client_inject'
     );
 });
 
 gulp.task('server:build', function(cb) {
     runSequence(
+        'clean',
         'tslint',
         'server_build'
     );
@@ -49,16 +49,3 @@ function task(taskname: string, option?: string) {
     return require(GULP_TASKS_SRC + taskname)(gulp, gulpLoadPlugins(), option);
 }
 
-/*
-
-gulp client_sass --env release
-gulp tslint --env release
-gulp client_deps --env release
-gulp client_copy --env release
-gulp client_build --env release
-gulp client_bundle --env release
-gulp client_inject --env release
-gulp client_node_modules --env release
-gulp client_release --env release
-
- */
