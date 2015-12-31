@@ -1,5 +1,6 @@
 import {join} from 'path';
 import util = require('gulp-util');
+import chalk = require('chalk');
 var Builder = require('systemjs-builder');
 var path = require('path');
 var async = require('async');
@@ -18,6 +19,7 @@ export = function client_build(gulp, plugins, option) {
     });
 
     return function (done) {
+        util.log(chalk.bgBlue('Starting client_build...'));
         let src = [
             join(CLIENT_SRC, '**/*.ts'),
             '!' + join(CLIENT_SRC, '**/*_spec.ts')

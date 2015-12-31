@@ -7896,4 +7896,7 @@ button.close {
 .fa-percent:before {
   content: ""; }
 
-/*# sourceMappingURL=../client/css/scss/app.css.map */
+body {
+  padding-top: 70px; }
+
+/*# sourceMappingURL=app.css.map */

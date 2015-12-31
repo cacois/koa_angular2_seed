@@ -1,8 +1,11 @@
+import util = require('gulp-util');
+import chalk = require('chalk');
 import path = require('path');
 import {CLIENT_SRC, CLIENT_DEST, CLIENT_CSS_DEST, NPM_DEPENDENCIES, templateLocals} from './config';
 
 export = function client_inject(gulp, plugins, option) {
     return () => {
+        util.log(chalk.bgBlue('Starting client_inject...'));
         return gulp.src(path.join(CLIENT_SRC, 'index.html'))
             .pipe(inject('shims'))
             .pipe(inject('libs'))

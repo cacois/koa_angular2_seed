@@ -1,8 +1,11 @@
+import util = require('gulp-util');
+import chalk = require('chalk');
 import {join} from 'path';
 import {GULP_TASKS_SRC, CLIENT_SRC, SERVER_SRC} from './config';
 
 export = function tslint(gulp, plugins) {
     return function () {
+        util.log(chalk.bgBlue('Starting tslint...'));
         let src = [
             join(GULP_TASKS_SRC, '**/*.ts'),
             '!' + join(GULP_TASKS_SRC, '**/*.d.ts'),

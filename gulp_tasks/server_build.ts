@@ -1,4 +1,5 @@
 import util = require('gulp-util');
+import chalk = require('chalk');
 import {join} from 'path';
 import {ENV, SERVER_SRC, SERVER_DEST} from './config';
 
@@ -9,6 +10,7 @@ export = function server_build(gulp, plugins, option) {
     });
 
     return function () {
+        util.log(chalk.bgBlue('Starting server_build...'));
         let src = [
             join(SERVER_SRC, '**/*.ts')
         ];

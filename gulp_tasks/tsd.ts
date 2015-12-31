@@ -1,7 +1,10 @@
+import util = require('gulp-util');
+import chalk = require('chalk');
 var runSequence = require('run-sequence');
 
 export = function tsd(gulp, plugins) {
     return function () {
+        util.log(chalk.bgBlue('Starting tsd...'));
         gulp.task('tsd:gulp', plugins.shell.task([
             'tsd reinstall --clean',
             'tsd link',
