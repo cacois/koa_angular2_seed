@@ -10,6 +10,9 @@ var config = require('../config.json');
 var publicPath = path.resolve(__dirname, '../public');
 var router = new Router();
 
+var apiRouter = require('./api');
+router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
+
 router.get('/', function *() {
     console.log(publicPath);
     yield send(this, 'index.html', {
@@ -24,9 +27,6 @@ router.get('/*', function *():any {
         gzip: true
     });
 });
-
-var apiRouter = require('./api');
-router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
 
 router.get('/handle_facebook_callback', function *(next):any {
     let redirectUri:String = '/#';
