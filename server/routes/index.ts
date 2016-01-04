@@ -1,39 +1,41 @@
 'use strict';
 
-module.exports = (api: any) => {
-    var send = require('koa-send');
-    var path = require('path');
-    var jwt = require('jsonwebtoken');
-    var config = require('../config.json');
 
-    var publicPath = path.resolve(__dirname, '../public');
+var Router = require('koa-router');
+var send = require('koa-send');
+var path = require('path');
+var jwt = require('jsonwebtoken');
+var config = require('../config.json');
 
-    api.get('/', function *() {
-        console.log(publicPath);
-        yield send(this, 'index.html', {
-            root: publicPath,
-            gzip: true
-        });
+var publicPath = path.resolve(__dirname, '../public');
+var router = new Router();
+
+router.get('/', function *() {
+    console.log(publicPath);
+    yield send(this, 'index.html', {
+        root: publicPath,
+        gzip: true
     });
+});
 
-    api.get('/*', function *(): any {
-        yield send(this, this.path, {
-            root: publicPath,
-            gzip: true
-        });
+router.get('/*', function *():any {
+    yield send(this, this.path, {
+        root: publicPath,
+        gzip: true
     });
+});
 
-    api.get('/hello', function *(next): any {
-        this.body = '<html><body><h1>test 123</h1></body></html>';
-    });
+var apiRouter = require('./api');
+router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
 
-    api.get('/handle_facebook_callback', function *(next): any {
-        let redirectUri: String = '/#';
+router.get('/handle_facebook_callback', function *(next):any {
+    let redirectUri:String = '/#';
 
-        if(this.query.access_token) {
-            redirectUri += '?jwt=' + jwt.sign({ facebookToken: this.query.access_token }, config.server.jwtSecret);
-        }
+    if (this.query.access_token) {
+        redirectUri += '?jwt=' + jwt.sign({facebookToken: this.query.access_token}, config.server.jwtSecret);
+    }
 
-        this.response.redirect(redirectUri);
-    });
-};
+    this.response.redirect(redirectUri);
+});
+
+module.exports = router;
