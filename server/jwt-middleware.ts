@@ -26,11 +26,11 @@ module.exports = (jwtSecret: string, path?:string, stream?:NodeJS.WritableStream
         }
 
         var parts:string[] = this.header.authorization.split(' ');
-        if(parts.length != 2) {
+        if(parts.length !== 2) {
             this.throw(401, 'Bad Authorization header format. Format is "Authorization: Bearer <token>"\n');
         }
 
-        if(parts[0].toLowerCase() != 'bearer') {
+        if(parts[0].toLowerCase() !== 'bearer') {
             this.throw(401, 'Bad Authorization header format. Format is "Authorization: Bearer <token>"\n');
         }
 
