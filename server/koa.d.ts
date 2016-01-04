@@ -5,3 +5,5 @@ declare module 'koa-session' {}
 declare module 'koa-qs' {}
 declare module 'koa-accesslog' {}
 declare module 'koa-send' {}
+declare module 'koa-mount' {}
+declare module 'grant-koa' {}

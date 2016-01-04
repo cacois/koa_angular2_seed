@@ -46,7 +46,7 @@ const SYSTEM_CONFIG_DEV = {
     defaultJSExtensions: true,
     paths: {
         'bootstrap': `${APP_BASE}bootstrap`,
-        '*': `${APP_BASE}node_modules/*`
+        '*': `${APP_BASE}lib/*`
     }
 };
 
@@ -71,6 +71,7 @@ export const SYSTEM_CONFIG_BUILDER = {
 
 export function templateLocals() {
     return {
+        ENV,
         APP_TITLE,
         SYSTEM_CONFIG
     };

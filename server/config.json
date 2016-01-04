@@ -1,0 +1,17 @@
+{
+    "server": {
+        "protocol": "http",
+        "host": "localhost:8080",
+        "jwtSecret": "secret"
+    },
+    "facebook": {
+        "key": "868446193273009",
+        "secret": "665fc92474393afd48bdbba7d83bc66d",
+        "callback": "/handle_facebook_callback",
+        "scope": [
+            "email",
+            "public_profile",
+            "user_friends"
+        ]
+    }
+}
