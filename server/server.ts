@@ -19,7 +19,7 @@ app
     .use(accesslog())
     .use(session(app))
     .use(mount(grant))
-    .use(jwtMiddleware(config.server.jwtSecret, '/hello'))
+    .use(jwtMiddleware.jwtMiddleware(config.server.jwtSecret, '/api'))
     .use(routes.routes())
     .use(routes.allowedMethods());
 koaqs(app);

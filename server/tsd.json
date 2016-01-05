@@ -6,7 +6,10 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
+      "commit": "6a6ad7068a177c0d7a8a20830626cb63277191c5"
+    },
+    "cookies/cookies.d.ts": {
+      "commit": "6a6ad7068a177c0d7a8a20830626cb63277191c5"
     }
   }
 }

@@ -1,9 +1,9 @@
 var jwt = require('jsonwebtoken');
 
-module.exports = (jwtSecret: string, path?:string, stream?:NodeJS.WritableStream) => {
-    var regexPattern: string  = '^';
+export function jwtMiddleware(jwtSecret:string, path?:string, stream?:NodeJS.WritableStream) {
+    var regexPattern:string = '^';
 
-    if(path) {
+    if (path) {
         regexPattern += path.startsWith('/') ? path : '/' + path;
     }
 
@@ -16,7 +16,7 @@ module.exports = (jwtSecret: string, path?:string, stream?:NodeJS.WritableStream
     var regex = new RegExp(regexPattern);
 
     return function* (next) {
-        if(!this.path.match(regex)) {
+        if (!this.path.match(regex)) {
             yield* next;
             return;
         }
@@ -26,17 +26,17 @@ module.exports = (jwtSecret: string, path?:string, stream?:NodeJS.WritableStream
         }
 
         var parts:string[] = this.header.authorization.split(' ');
-        if(parts.length !== 2) {
+        if (parts.length !== 2) {
             this.throw(401, 'Bad Authorization header format. Format is "Authorization: Bearer <token>"\n');
         }
 
-        if(parts[0].toLowerCase() !== 'bearer') {
+        if (parts[0].toLowerCase() !== 'bearer') {
             this.throw(401, 'Bad Authorization header format. Format is "Authorization: Bearer <token>"\n');
         }
 
         try {
             this.user = yield jwt.verify(parts[1], jwtSecret);
-        } catch(e) {
+        } catch (e) {
             stream.write('Invalid token - ' + e.message + '\n');
             this.throw(401, 'Invalid token\n');
         }
@@ -45,4 +45,5 @@ module.exports = (jwtSecret: string, path?:string, stream?:NodeJS.WritableStream
 
         yield* next;
     };
-};
+}
+
