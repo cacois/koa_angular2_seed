@@ -16,4 +16,9 @@ export class Login {
         event.preventDefault();
         window.location.href='/connect/facebook';
     }
+
+    login_twitter(event) {
+        event.preventDefault();
+        window.location.href='/connect/twitter';
+    }
 }

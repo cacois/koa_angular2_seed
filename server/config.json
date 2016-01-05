@@ -13,5 +13,10 @@
             "public_profile",
             "user_friends"
         ]
+    },
+    "twitter": {
+        "key": "dfVpTneoItXRa3ftvsd7igeYm",
+        "secret": "Ut6jXtjNtMm0dGFpr8JlorB3agPjClRh89aGtSJ6WGDcOouZxL",
+        "callback": "/handle_twitter_callback"
     }
 }

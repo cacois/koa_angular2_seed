@@ -27,6 +27,18 @@ router.get('/handle_facebook_callback', function *(next):any {
     this.response.redirect(redirectUri);
 });
 
+router.get('/handle_twitter_callback', function (req, res) {
+    let redirectUri:String = '/#';
+
+    if(this.query.access_token && this.query.access_secret) {
+        redirectUri += '?jwt=' + jwt.sign({
+                twitterToken: this.query.access_token,
+                twitterSecret: this.query.access_secret
+            }, config.server.jwtSecret);
+    }
+    this.response.redirect(redirectUri);
+});
+
 router.use(require('./static').routes());
 
 module.exports = router;
