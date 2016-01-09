@@ -59,6 +59,7 @@
     "merge-stream": "^1.0.0",
     "mongodb": "^2.1.2",
     "nodemon": "^1.8.1",
+    "primus": "^4.0.4",
     "run-sequence": "^1.1.5",
     "systemjs-builder": "^0.14.15",
     "ts-node": "^0.5.5",
@@ -66,6 +67,7 @@
     "tslint": "^3.2.1",
     "typescript": "^1.7.5",
     "typescript-register": "^1.1.0",
+    "validator": "^4.5.0",
     "yargs": "^3.31.0"
   }
 }

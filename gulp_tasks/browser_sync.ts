@@ -12,6 +12,7 @@ export = function browser_sync(gulp, plugins) {
             proxy: 'localhost:8000',
             port: 8080,
             notify: true,
+            ws: true,
             files: [join(APP_DEST, '**/*.*')]
         });
     };

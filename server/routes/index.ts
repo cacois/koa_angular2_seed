@@ -14,17 +14,21 @@ router.get('/handle_facebook_callback', function *(next):any {
     var redirectUri:String = '/#';
 
     if (this.query.access_token) {
-        var fbUser = yield FacebookService.getUser(this.query.access_token);
-        if(fbUser) {
-            var mongo = this.mongo.db('koa');
-            var user = yield User.getFacebookUser(mongo, fbUser.facebookId);
-            if(!user) user = {};
-            user.facebookId = fbUser.facebookId;
-            user.name = fbUser.name;
-            user.email = fbUser.email;
-            yield User.upsertFacebookUser(mongo, user);
+        try {
+            var fbUser = yield FacebookService.getUser(this.query.access_token);
+            if (fbUser) {
+                var mongo = this.mongo.db('koa');
+                var user = yield User.getFacebookUser(mongo, fbUser.facebookId);
+                if (!user) user = {};
+                user.facebookId = fbUser.facebookId;
+                user.name = fbUser.name;
+                user.email = fbUser.email;
+                yield User.upsertFacebookUser(mongo, user);
 
-            redirectUri += '?jwt=' + jwt.sign({facebookToken: this.query.access_token}, config.server.jwtSecret);
+                redirectUri += '?jwt=' + jwt.sign({facebookToken: this.query.access_token}, config.server.jwtSecret);
+            }
+        } catch(err) {
+            console.log('Facebook Callback Error: ', err);
         }
     }
 

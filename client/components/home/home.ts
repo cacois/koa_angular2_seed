@@ -8,4 +8,24 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 })
 export class Home {
     public test:any = util.uuid();
+    private primus = new Primus();
+
+    constructor() {
+
+        this.primus.on('open', function open() {
+            console.log("open");
+        });
+
+        this.primus.on('data', function (data) {
+            console.log("data : " + data);
+            var li = document.createElement('li');
+            li.innerHTML = JSON.stringify(data);
+            document.getElementById('list').appendChild(li);
+        });
+    }
+
+    chat(text:string, $event):void {
+        console.log(text);
+        this.primus.write(text);
+    }
 }

@@ -49,6 +49,12 @@
         </div>
         <div class="col-xs-8">
             chatty chat chat! 123
+            chat :
+            <input #inputstring (keyup.enter)="chat(inputstring.value, $event)"/>
+
+
+            <ul id="list">
+            </ul>
         </div>
         <div class="col-xs-2">
             <ul class="nav nav-pills nav-stacked">
