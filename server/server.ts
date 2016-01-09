@@ -6,6 +6,7 @@ import mount = require('koa-mount');
 import koaqs = require('koa-qs');
 import accesslog = require('koa-accesslog');
 import Grant = require('grant-koa');
+import mongo = require('koa-mongo');
 import jwtMiddleware = require('./jwt-middleware');
 
 var config = require('./config.json');
@@ -19,6 +20,13 @@ app
     .use(accesslog())
     .use(session(app))
     .use(mount(grant))
+    .use(mongo({
+        uri: 'mongodb://localhost:27017/db',
+        max: 100,
+        min: 1,
+        timeout: 30000,
+        log: false
+    }))
     .use(jwtMiddleware.jwtMiddleware(config.server.jwtSecret, '/api'))
     .use(routes.routes())
     .use(routes.allowedMethods());

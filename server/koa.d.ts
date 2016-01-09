@@ -634,3 +634,7 @@ declare module 'grant-koa' {
 
     export = GrantKoa;
 }
+declare module 'koa-mongo' {
+    function m(config?:Object):Function;
+    export = m;
+}

@@ -6,10 +6,13 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "6a6ad7068a177c0d7a8a20830626cb63277191c5"
+      "commit": "ba257a9b91bc0de1bdd9091b6723194c905a902a"
     },
     "cookies/cookies.d.ts": {
       "commit": "6a6ad7068a177c0d7a8a20830626cb63277191c5"
+    },
+    "mongodb/mongodb.d.ts": {
+      "commit": "ba257a9b91bc0de1bdd9091b6723194c905a902a"
     }
   }
 }

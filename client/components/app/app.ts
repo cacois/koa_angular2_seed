@@ -15,5 +15,7 @@ import {
     {path: '/...', component: RootView, as: 'RootView', useAsDefault: true}
 ])
 export class App {
-    constructor() {}
+    constructor() {
+        // nothing to do yet
+    }
 }

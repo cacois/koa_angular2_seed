@@ -1,3 +1,4 @@
 enum UserType {
-    Facebook
+    Facebook,
+    Twitter
 }
