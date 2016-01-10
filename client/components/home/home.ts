@@ -1,6 +1,6 @@
 import * as util from '../../util';
 import {Component, ViewEncapsulation} from 'angular2/core';
-import Primus = require("primus");
+import Primus = require('primus');
 
 @Component({
     selector: 'home',
@@ -14,11 +14,11 @@ export class Home {
     constructor() {
 
         this.primus.on('open', function open() {
-            console.log("open");
+            console.log('open');
         });
 
         this.primus.on('data', function (data) {
-            console.log("data : " + data);
+            console.log('data : ' + data);
             var li = document.createElement('li');
             li.innerHTML = JSON.stringify(data);
             document.getElementById('list').appendChild(li);

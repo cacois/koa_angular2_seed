@@ -28,39 +28,38 @@ declare module "primus" {
     }
 
     interface PrimusOptions {
-        authorization: Function;
-        pathname: string;
-        parser: string;
-        transformer: string;
-        plugin: Object;
-        timeout: number;
-        global: string;
-        compression: boolean;
-        origins:string;
-        methods:string;
-        credentials:boolean;
-        maxAge:string;
-        headers:boolean;
-        exposed:boolean;
-        strategy: any;
+        authorization?: Function;
+        pathname?: string;
+        parser?: string;
+        transformer?: string;
+        plugin?: Object;
+        timeout?: number;
+        global?: string;
+        compression?: boolean;
+        origins?:string;
+        methods?:string;
+        credentials?:boolean;
+        maxAge?:string;
+        headers?:boolean;
+        exposed?:boolean;
+        strategy?: any;
     }
 
     interface PrimusConnectOptions {
-        reconnect: any;
-        timeout: number;
-        ping: number;
-        pong: number;
-        strategy: string;
-        manual: boolean;
-        websockets: boolean;
-        network: boolean;
-        transport: any;
-        queueSize: any;
-        reconnect: {
-            max: any;
-            min: number;
-            retries: number;
-            factor: number;
+        timeout?: number;
+        ping?: number;
+        pong?: number;
+        strategy?: string;
+        manual?: boolean;
+        websockets?: boolean;
+        network?: boolean;
+        transport?: any;
+        queueSize?: any;
+        reconnect?: {
+            max?: any;
+            min?: number;
+            retries?: number;
+            factor?: number;
         }
     }
 
