@@ -5,8 +5,8 @@
 ### Node
 node_modules/
 
-### Build Stuff
-tmp/
+### Build Locations
+client/css/
 dist/
 
 ### MongoDB
