@@ -70,3 +70,5 @@ primus.on('connection', function (spark) {
 primus.on('disconnection', function (spark) {
     console.log('disconnection');
 });
+
+module.exports = server;

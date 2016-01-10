@@ -17,6 +17,7 @@ gulp.task('client_post_build', [], task('client_post_build'));
 gulp.task('client_inject', [], task('client_inject'));
 gulp.task('server_copy', [], task('server_copy'));
 gulp.task('server_build', ['server_copy'], task('server_build'));
+gulp.task('server_test', [], task('server_test'));
 gulp.task('nodemon', [], task('nodemon'));
 gulp.task('browser_sync', [], task('browser_sync'));
 gulp.task('watch', [], task('watch'));
@@ -55,6 +56,7 @@ gulp.task('build', function(cb) {
         'client_post_build',
         'client_inject',
         'server_build',
+        'server_test',
         cb
     );
 });

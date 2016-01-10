@@ -9,7 +9,7 @@
             "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
         },
         "node/node.d.ts": {
-            "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
         },
         "gulp/gulp.d.ts": {
             "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
@@ -82,6 +82,21 @@
         },
         "chokidar/chokidar.d.ts": {
             "commit": "dc9dabe74a5be62613b17a3605309783a12ff28a"
+        },
+        "mocha/mocha.d.ts": {
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+        },
+        "assertion-error/assertion-error.d.ts": {
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+        },
+        "chai/chai.d.ts": {
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+        },
+        "supertest/supertest.d.ts": {
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+        },
+        "superagent/superagent.d.ts": {
+            "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
         }
     }
 }
