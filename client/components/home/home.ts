@@ -1,5 +1,6 @@
 import * as util from '../../util';
 import {Component, ViewEncapsulation} from 'angular2/core';
+import Primus = require("primus");
 
 @Component({
     selector: 'home',
