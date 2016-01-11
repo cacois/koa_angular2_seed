@@ -13,6 +13,7 @@ export = function server_test(gulp, plugins, option) {
                 join(CLIENT_DEST, '**/*.spec.js')
             ])
             .pipe(plugins.mocha({
+                timeout: 5000,
                 reporter: 'spec'
             }))
             .once('end', function () {
