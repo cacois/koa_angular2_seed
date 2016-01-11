@@ -18,6 +18,8 @@ var routes = require('./routes');
 var app:any = koa();
 var grant = new Grant(require('./config.json'));
 
+Logging.info(config);
+
 app.keys = ['grant'];
 
 app
