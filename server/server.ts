@@ -10,6 +10,7 @@ import mongo = require('koa-mongo');
 import Primus = require('primus');
 import validator = require('validator');
 import jwtMiddleware = require('./jwt-middleware');
+import {Logging} from './util/logging';
 
 var config = require('./config.json');
 var routes = require('./routes');
@@ -18,8 +19,9 @@ var app:any = koa();
 var grant = new Grant(require('./config.json'));
 
 app.keys = ['grant'];
+
 app
-    .use(accesslog())
+    .use(accesslog(Logging.logStream))
     .use(session(app))
     .use(mount(grant))
     .use(mongo({
@@ -38,7 +40,7 @@ var port = 8000;
 var ip = '127.0.0.1';
 
 var server = app.listen(port, function () {
-    console.log('Listening at: http://' + ip + ':' + port);
+    Logging.info('Listening at: http://' + ip + ':' + port);
 });
 
 var primus = new Primus(server, {transformer: 'engine.io'});
@@ -46,20 +48,20 @@ primus.library();
 
 // connect hook
 primus.on('connection', function (spark) {
-    console.log('connection');
+    Logging.info('connection');
     // spark is the new connection
-    console.log('spark headers : ', spark.headers);
-    console.log('spark address : ', spark.address);
+    Logging.info('spark headers : ', spark.headers);
+    Logging.info('spark address : ', spark.address);
     // query string sockjs not supported
-    console.log('spark query : ', spark.query);
+    Logging.info('spark query : ', spark.query);
     // spark id can get client id
-    console.log('spark id  : ', spark.id);
+    Logging.info('spark id  : ', spark.id);
 
     // send Connect message to one connect client
     spark.write('CONNECT!!!');
     // receive data
     spark.on('data', function(data) {
-        console.log(data);
+        Logging.info(data);
         // broadcast all client
         primus.write(validator.escape(data));
     });
@@ -68,7 +70,7 @@ primus.on('connection', function (spark) {
 
 // disconnect hook
 primus.on('disconnection', function (spark) {
-    console.log('disconnection');
+    Logging.info('disconnection');
 });
 
 module.exports = server;

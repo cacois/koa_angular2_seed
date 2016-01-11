@@ -616,15 +616,7 @@ declare module 'koa-qs' {
     export = qs;
 }
 declare module 'koa-accesslog' {
-    function a():a;
-
-    interface AccessLog {
-    }
-
-    interface a {
-        (): AccessLog;
-    }
-
+    function a(stream:any):Function;
     export = a;
 }
 declare module 'grant-koa' {

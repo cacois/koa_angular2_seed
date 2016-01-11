@@ -45,6 +45,14 @@ gulp.task('server:build', function(cb) {
     );
 });
 
+gulp.task('server:test', function(cb) {
+    runSequence(
+        'build',
+        'server_test',
+        cb
+    );
+});
+
 gulp.task('build', function(cb) {
     runSequence(
         'clean',
@@ -56,10 +64,20 @@ gulp.task('build', function(cb) {
         'client_post_build',
         'client_inject',
         'server_build',
+        cb
+    );
+});
+
+gulp.task('test', function(cb) {
+    runSequence(
+        'build',
         'server_test',
         cb
     );
 });
+
+gulp.task('default', ['watch']);
+
 
 function task(taskname: string, option?: string) {
     util.log(

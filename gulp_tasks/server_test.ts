@@ -7,7 +7,12 @@ export = function server_test(gulp, plugins, option) {
     return function () {
         util.log(chalk.bgBlue('Starting server_test...'));
 
-        return gulp.src([join(SERVER_DEST, 'test/**/*.js')])
+        process.env.NODE_ENV = 'test';
+
+        return gulp.src([
+                join(SERVER_DEST, '**/*.spec.js'),
+                '!' + join(SERVER_DEST, 'public/**/*.spec.js')
+            ])
             .pipe(plugins.mochaCo({
                 reporter: 'spec'
             }))

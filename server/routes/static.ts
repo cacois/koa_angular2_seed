@@ -6,7 +6,6 @@ var router = new Router();
 var publicPath = path.resolve(__dirname, '../public');
 
 router.get('/', function *() {
-    console.log(publicPath);
     yield send(this, 'index.html', {
         root: publicPath,
         gzip: true

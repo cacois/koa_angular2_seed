@@ -5,14 +5,13 @@ import Primus = require('primus');
 @Component({
     selector: 'home',
     templateUrl: './components/home/home.html',
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None
 })
 export class Home {
     public test:any = util.uuid();
     private primus = new Primus();
 
     constructor() {
-
         this.primus.on('open', function open() {
             console.log('open');
         });

@@ -22,8 +22,10 @@ export = function client_build(gulp, plugins, option) {
         util.log(chalk.bgBlue('Starting client_build...'));
         let src = [
             join(CLIENT_SRC, '**/*.ts'),
-            '!' + join(CLIENT_SRC, '**/*_spec.ts')
         ];
+        if(ENV !== 'dev') {
+            src.push('!' + join(CLIENT_SRC, '**/*.spec.ts'));
+        }
 
         let result = gulp.src(src)
             .pipe(ENV === 'dev' ? plugins.sourcemaps.init() : util.noop())

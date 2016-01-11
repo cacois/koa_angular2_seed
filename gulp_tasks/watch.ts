@@ -1,11 +1,12 @@
 var runSequence = require('run-sequence');
 import {join} from 'path';
 
-import {CLIENT_SRC, SERVER_SRC} from './config';
+import {ENV, CLIENT_SRC, SERVER_SRC} from './config';
 
 
 export = function watch(gulp, plugins) {
     return function () {
+        process.env.NODE_ENV = ENV;
         runSequence(
             'build',
             'nodemon',

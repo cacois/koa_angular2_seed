@@ -14,6 +14,9 @@ export = function server_build(gulp, plugins, option) {
         let src = [
             join(SERVER_SRC, '**/*.ts')
         ];
+        if(ENV !== 'dev') {
+            src.push('!' + join(SERVER_SRC, '**/*.spec.ts'));
+        }
 
         let result = gulp.src(src)
             .pipe(ENV === 'dev' ? plugins.sourcemaps.init() : util.noop())

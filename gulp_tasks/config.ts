@@ -45,6 +45,7 @@ export const NPM_DEPENDENCIES = [
 const SYSTEM_CONFIG_DEV = {
     defaultJSExtensions: true,
     paths: {
+        'primus': `/primus/primus`,
         'bootstrap': `${APP_BASE}bootstrap`,
         '*': `${APP_BASE}lib/*`
     }
@@ -64,6 +65,7 @@ export const SYSTEM_CONFIG_BUILDER = {
     defaultJSExtensions: true,
     paths: {
         '*': `${CLIENT_DEST}/*`,
+        'primus': '/primus/primus',
         'angular2/*': 'node_modules/angular2/*',
         'rxjs/*': 'node_modules/rxjs/*'
     }
