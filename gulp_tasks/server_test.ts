@@ -13,11 +13,11 @@ export = function server_test(gulp, plugins, option) {
                 join(SERVER_DEST, '**/*.spec.js'),
                 '!' + join(SERVER_DEST, 'public/**/*.spec.js')
             ])
-            .pipe(plugins.mochaCo({
+            .pipe(plugins.mocha({
                 reporter: 'spec'
             }))
             .once('end', function () {
-                process.exit();
+                //process.exit();
             });
     };
 }

@@ -12,12 +12,11 @@ export = function server_test(gulp, plugins, option) {
         return gulp.src([
                 join(CLIENT_DEST, '**/*.spec.js')
             ])
-            .pipe(plugins.debug())
-            .pipe(plugins.mochaCo({
+            .pipe(plugins.mocha({
                 reporter: 'spec'
             }))
             .once('end', function () {
-                process.exit();
+                //process.exit();
             });
     };
 }

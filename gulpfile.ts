@@ -22,6 +22,7 @@ gulp.task('server_test', [], task('server_test'));
 gulp.task('nodemon', [], task('nodemon'));
 gulp.task('browser_sync', [], task('browser_sync'));
 gulp.task('watch', [], task('watch'));
+gulp.task('exit', [], task('exit'));
 
 gulp.task('client:build', function(cb) {
     runSequence(
@@ -82,6 +83,7 @@ gulp.task('test', function(cb) {
         'build',
         'server_test',
         'client_test',
+        'exit',
         cb
     );
 });
