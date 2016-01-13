@@ -6,3 +6,4 @@
 /// <reference path="assertion-error/assertion-error.d.ts" />
 /// <reference path="chai/chai.d.ts" />
 /// <reference path="winston/winston.d.ts" />
+/// <reference path="twitter/twitter.d.ts" />

@@ -52,10 +52,10 @@ primus.library();
 primus.on('connection', function (spark) {
     Logging.info('connection');
     // spark is the new connection
-    Logging.info('spark headers : ', spark.headers);
-    Logging.info('spark address : ', spark.address);
+    //Logging.info('spark headers : ', spark.headers);
+    //Logging.info('spark address : ', spark.address);
     // query string sockjs not supported
-    Logging.info('spark query : ', spark.query);
+    //Logging.info('spark query : ', spark.query);
     // spark id can get client id
     Logging.info('spark id  : ', spark.id);
 
@@ -63,7 +63,7 @@ primus.on('connection', function (spark) {
     spark.write('CONNECT!!!');
     // receive data
     spark.on('data', function(data) {
-        Logging.info(data);
+        //Logging.info(data);
         // broadcast all client
         primus.write(validator.escape(data));
     });

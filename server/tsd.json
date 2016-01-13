@@ -28,6 +28,9 @@
     },
     "winston/winston.d.ts": {
       "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "twitter/twitter.d.ts": {
+      "commit": "1984ea435fe9e93a012d50db7773db58ae5d494b"
     }
   }
 }

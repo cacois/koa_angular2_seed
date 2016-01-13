@@ -1,5 +1,6 @@
 import {User} from '../models/user';
 import {FacebookService} from '../services/facebook-service';
+import {TwitterService} from '../services/twitter-service';
 'use strict';
 
 var Router = require('koa-router');
@@ -35,15 +36,31 @@ router.get('/handle_facebook_callback', function *(next):any {
     this.response.redirect(redirectUri);
 });
 
-router.get('/handle_twitter_callback', function (req, res) {
+router.get('/handle_twitter_callback', function *(next) {
     var redirectUri:String = '/#';
 
-    if(this.query.access_token && this.query.access_secret) {
-        redirectUri += '?jwt=' + jwt.sign({
-                twitterToken: this.query.access_token,
-                twitterSecret: this.query.access_secret
-            }, config.server.jwtSecret);
+    if (this.query.access_token) {
+        try {
+            var twitterUser = yield TwitterService.getUser(this.query.access_token, this.query.access_secret);
+            if (twitterUser) {
+                var mongo = this.mongo.db('koa');
+                var user = yield User.getTwitterUser(mongo, twitterUser.twitterId);
+                if (!user) user = {};
+                user.twitterId = twitterUser.twitterId;
+                user.name = twitterUser.name;
+                user.email = twitterUser.email;
+                yield User.upsertTwitterUser(mongo, user);
+
+                redirectUri += '?jwt=' + jwt.sign({
+                        twitterToken: this.query.access_token,
+                        twitterSecret: this.query.access_secret
+                    }, config.server.jwtSecret);
+            }
+        } catch(err) {
+            console.log('Facebook Callback Error: ', err);
+        }
     }
+
     this.response.redirect(redirectUri);
 });
 

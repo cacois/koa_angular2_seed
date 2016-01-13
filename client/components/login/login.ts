@@ -6,6 +6,10 @@ import {Component, ViewEncapsulation} from 'angular2/core';
     encapsulation: ViewEncapsulation.None,
 })
 export class Login {
+    constructor() {
+        localStorage.removeItem('jwt');
+    }
+
     login(event, username, password) {
         event.preventDefault();
         console.log('login ', username, password);
