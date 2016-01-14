@@ -31,6 +31,9 @@
     },
     "twitter/twitter.d.ts": {
       "commit": "1984ea435fe9e93a012d50db7773db58ae5d494b"
+    },
+    "sinon/sinon.d.ts": {
+      "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
     }
   }
 }

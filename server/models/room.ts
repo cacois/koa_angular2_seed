@@ -15,16 +15,14 @@ export module Room {
                 }
                 var cursor = rooms.find();
                 var roomsList = [];
-                cursor.each(function(err, doc) {
+                cursor.each(function (err, doc) {
                     if (err) {
                         console.error(err);
                         reject(err);
                     }
 
-                    roomsList.push(doc);
+                    doc ? roomsList.push(doc) : resolve(roomsList);
                 });
-
-                resolve(roomsList);
             });
         });
     }
