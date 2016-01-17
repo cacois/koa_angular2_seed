@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 
-@Component({
+@Component(<any>{
     selector: 'login',
     templateUrl: './components/login/login.html',
     encapsulation: ViewEncapsulation.None,

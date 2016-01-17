@@ -24,7 +24,7 @@ gulp.task('browser_sync', [], task('browser_sync'));
 gulp.task('watch', [], task('watch'));
 gulp.task('exit', [], task('exit'));
 
-gulp.task('client:build', function(cb) {
+gulp.task('client:build', function (cb) {
     runSequence(
         'clean',
         'tslint',
@@ -38,7 +38,7 @@ gulp.task('client:build', function(cb) {
     );
 });
 
-gulp.task('client:test', function(cb) {
+gulp.task('client:test', function (cb) {
     runSequence(
         'build',
         'client_test',
@@ -46,7 +46,7 @@ gulp.task('client:test', function(cb) {
     );
 });
 
-gulp.task('server:build', function(cb) {
+gulp.task('server:build', function (cb) {
     runSequence(
         'clean',
         'tslint',
@@ -55,7 +55,7 @@ gulp.task('server:build', function(cb) {
     );
 });
 
-gulp.task('server:test', function(cb) {
+gulp.task('server:test', function (cb) {
     runSequence(
         'build',
         'server_test',
@@ -63,7 +63,7 @@ gulp.task('server:test', function(cb) {
     );
 });
 
-gulp.task('build', function(cb) {
+gulp.task('build', function (cb) {
     runSequence(
         'clean',
         'tslint',
@@ -78,7 +78,7 @@ gulp.task('build', function(cb) {
     );
 });
 
-gulp.task('test', function(cb) {
+gulp.task('test', function (cb) {
     runSequence(
         'build',
         'server_test',
@@ -91,7 +91,7 @@ gulp.task('test', function(cb) {
 gulp.task('default', ['watch']);
 
 
-function task(taskname: string, option?: string) {
+function task(taskname:string, option?:string) {
     util.log(
         'Loading task',
         chalk.yellow(taskname, option || ''),

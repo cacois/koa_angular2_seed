@@ -42,7 +42,7 @@ export const NPM_DEPENDENCIES = [
     {src: 'node_modules/angular2/bundles/http.min.js', inject: 'libs'}
 ];
 
-const SYSTEM_CONFIG_DEV = {
+export const SYSTEM_CONFIG_DEV = {
     defaultJSExtensions: true,
     paths: {
         'primus': `/primus/primus`,
@@ -51,7 +51,7 @@ const SYSTEM_CONFIG_DEV = {
     }
 };
 
-const SYSTEM_CONFIG_PROD = {
+export const SYSTEM_CONFIG_PROD = {
     defaultJSExtensions: true,
     bundles: {
         'lib/app': ['bootstrap']

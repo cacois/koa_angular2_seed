@@ -8,3 +8,5 @@
 /// <reference path="winston/winston.d.ts" />
 /// <reference path="twitter/twitter.d.ts" />
 /// <reference path="sinon/sinon.d.ts" />
+/// <reference path="chai-as-promised/chai-as-promised.d.ts" />
+/// <reference path="promises-a-plus/promises-a-plus.d.ts" />

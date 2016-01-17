@@ -20,8 +20,8 @@ describe('User Model', () => {
             User.getFacebookUser(db, 'missing')
                 .then(function (user) {
                     expect(user).to.be.a('null');
-                    done();
-                });
+                })
+                .then(done, done);
         });
     });
 
@@ -37,8 +37,8 @@ describe('User Model', () => {
                         .then((user) => {
                             expect(user).to.not.be.a('null');
                             expect(user.name).to.equal('test');
-                            done();
-                        });
+                        })
+                        .then(done, done);
                 });
         });
     });
@@ -53,13 +53,14 @@ describe('User Model', () => {
                     expect(user.name).to.equal('test');
                     expect(user.email).to.equal('test');
                     User.upsertFacebookUser(db, {facebookId: 'test', name: 'test2'}).then(function () {
-                        User.getFacebookUser(db, 'test').then((user) => {
-                            expect(user).to.not.be.a('null');
-                            expect(user).to.have.property('name');
-                            expect(user.name).to.equal('test2');
-                            expect(user).to.not.have.property('email');
-                            done();
-                        });
+                        User.getFacebookUser(db, 'test')
+                            .then((user) => {
+                                expect(user).to.not.be.a('null');
+                                expect(user).to.have.property('name');
+                                expect(user.name).to.equal('test2');
+                                expect(user).to.not.have.property('email');
+                            })
+                            .then(done, done);
                     });
                 });
             });
@@ -73,8 +74,8 @@ describe('User Model', () => {
             User.getTwitterUser(db, 'missing')
                 .then(function (user) {
                     expect(user).to.be.a('null');
-                    done();
-                });
+                })
+                .then(done, done);
         });
     });
 
@@ -90,8 +91,8 @@ describe('User Model', () => {
                         .then((user) => {
                             expect(user).to.not.be.a('null');
                             expect(user.name).to.equal('test');
-                            done();
-                        });
+                        })
+                        .then(done, done);
                 });
         });
     });
@@ -106,13 +107,14 @@ describe('User Model', () => {
                     expect(user.name).to.equal('test');
                     expect(user.email).to.equal('test');
                     User.upsertTwitterUser(db, {twitterId: 'test', name: 'test2'}).then(function () {
-                        User.getTwitterUser(db, 'test').then((user) => {
-                            expect(user).to.not.be.a('null');
-                            expect(user).to.have.property('name');
-                            expect(user.name).to.equal('test2');
-                            expect(user).to.not.have.property('email');
-                            done();
-                        });
+                        User.getTwitterUser(db, 'test')
+                            .then((user) => {
+                                expect(user).to.not.be.a('null');
+                                expect(user).to.have.property('name');
+                                expect(user.name).to.equal('test2');
+                                expect(user).to.not.have.property('email');
+                            })
+                            .then(done, done);
                     });
                 });
             });

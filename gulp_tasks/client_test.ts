@@ -16,8 +16,9 @@ export = function server_test(gulp, plugins, option) {
                 timeout: 5000,
                 reporter: 'spec'
             }))
-            .once('end', function () {
-                //process.exit();
+            .once('error', (error) => {
+                console.error(error);
+                process.exit(1);
             });
     };
 }

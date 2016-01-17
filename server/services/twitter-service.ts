@@ -12,7 +12,7 @@ export module TwitterService {
                 access_token_secret: access_token_secret
             });
 
-            client.get('account/verify_credentials', function(error, profile, response){
+            client.get('account/verify_credentials', function(error, profile, response) {
                 if(error) {
                     reject(error);
                 } else {

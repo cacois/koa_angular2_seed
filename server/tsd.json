@@ -21,10 +21,10 @@
       "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
     },
     "assertion-error/assertion-error.d.ts": {
-      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+      "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
     },
     "chai/chai.d.ts": {
-      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+      "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
     },
     "winston/winston.d.ts": {
       "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
@@ -33,6 +33,12 @@
       "commit": "1984ea435fe9e93a012d50db7773db58ae5d494b"
     },
     "sinon/sinon.d.ts": {
+      "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
+    },
+    "chai-as-promised/chai-as-promised.d.ts": {
+      "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
+    },
+    "promises-a-plus/promises-a-plus.d.ts": {
       "commit": "d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
     }
   }

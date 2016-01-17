@@ -5,17 +5,18 @@ import {Login} from '../login/login';
 import {
     RouteConfig,
     RouteParams,
+    RouteDefinition,
     ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-@Component({
+@Component(<any>{
     templateUrl: './components/app/root-view.html',
     encapsulation: ViewEncapsulation.None,
     directives: [ROUTER_DIRECTIVES, LoggedInRouterOutlet]
 })
 @RouteConfig([
-    {path: '/', component: Home, as: 'Home', useAsDefault: true},
-    {path: '/login', component: Login, as: 'Login'}
+    <RouteDefinition>{path: '/', component: Home, as: 'Home', useAsDefault: true},
+    <RouteDefinition>{path: '/login', component: Login, as: 'Login'}
 ])
 export class RootView {
     constructor(routeParams: RouteParams) {

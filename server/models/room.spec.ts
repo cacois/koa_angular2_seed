@@ -21,8 +21,8 @@ describe('Room Model', () => {
                 .then(function (rooms) {
                     expect(rooms).to.be.instanceof(Array);
                     expect(rooms.length).to.be.equal(0);
-                    done();
-                });
+                })
+                .then(done, done);
         });
     });
 
@@ -36,8 +36,8 @@ describe('Room Model', () => {
                         .then(function (rooms) {
                             expect(rooms).to.be.instanceof(Array);
                             expect(rooms.length).to.be.equal(1);
-                            done();
-                        });
+                        })
+                        .then(done, done);
                 });
         });
     });

@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 import {RootView} from './root-view';
 import {
     RouteConfig,
+    RouteDefinition,
     ROUTER_DIRECTIVES
 } from 'angular2/router';
 
@@ -12,7 +13,7 @@ import {
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-    {path: '/...', component: RootView, as: 'RootView', useAsDefault: true}
+    <RouteDefinition>{path: '/...', component: RootView, as: 'RootView', useAsDefault: true}
 ])
 export class App {
     constructor() {
