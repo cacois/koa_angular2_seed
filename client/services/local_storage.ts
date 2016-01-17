@@ -1,10 +1,11 @@
-import {provide, Inject, OpaqueToken} from 'angular2/core'
+import {provide, Inject, OpaqueToken} from 'angular2/core';
 
-const localStorageBackend = new OpaqueToken('localStorageBackend');
+export const localStorageBackend = new OpaqueToken('localStorageBackend');
 
-interface StorageBackend {
+export interface StorageBackend {
     getItem(key:string):any;
     setItem(key:string, value:any):void;
+    removeItem(key:string):void;
 }
 
 export class Storage {
@@ -20,6 +21,10 @@ export class Storage {
 
     setItem(key, value) {
         return this.storageBackend.setItem(key, value);
+    }
+
+    removeItem(key) {
+        return this.storageBackend.removeItem(key);
     }
 }
 

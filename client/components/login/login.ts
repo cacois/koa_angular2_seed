@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
+import {Storage} from '../../services/local_storage';
 
 @Component(<any>{
     selector: 'login',
@@ -7,7 +8,6 @@ import {Component, ViewEncapsulation} from 'angular2/core';
 })
 export class Login {
     constructor(storage:Storage) {
-        console.log(storage.getItem('jwt'));
         storage.removeItem('jwt');
     }
 

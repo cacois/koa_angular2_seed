@@ -81,6 +81,7 @@
     "typescript-register": "^1.1.0",
     "validator": "^4.5.0",
     "winston": "^2.1.1",
-    "yargs": "^3.31.0"
+    "yargs": "^3.31.0",
+    "zone.js": "^0.5.10"
   }
 }

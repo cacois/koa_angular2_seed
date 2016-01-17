@@ -2,8 +2,49 @@ import {global, FunctionWrapper, isPresent, Type} from 'angular2/src/facade/lang
 import {ListWrapper} from 'angular2/src/facade/collection';
 import {Injector, Provider, PLATFORM_INITIALIZER} from 'angular2/core';
 import {BaseException} from 'angular2/src/facade/exceptions';
+import * as chai from 'chai';
 
 var _global: any = <any>(typeof window === 'undefined' ? global : window);
+
+export class TestInjector {
+    platformProviders: Array<Type | Provider | any[]> = [];
+
+    applicationProviders: Array<Type | Provider | any[]> = [];
+
+    private _instantiated: boolean = false;
+
+    private _injector: Injector = null;
+
+    private _providers: Array<Type | Provider | any[]> = [];
+
+    reset() {
+        this._injector = null;
+        this._providers = [];
+        this._instantiated = false;
+    }
+
+    addProviders(providers: Array<Type | Provider | any[]>) {
+        if (this._instantiated) {
+            throw new BaseException('Cannot add providers after test injector is instantiated');
+        }
+        this._providers = ListWrapper.concat(this._providers, providers);
+    }
+
+    createInjector() {
+        var rootInjector = Injector.resolveAndCreate(this.platformProviders);
+        this._injector = rootInjector.resolveAndCreateChild(
+            ListWrapper.concat(this.applicationProviders, this._providers));
+        this._instantiated = true;
+        return this._injector;
+    }
+
+    execute(fn: FunctionWithParamTokens): any {
+        if (!this._instantiated) {
+            this.createInjector();
+        }
+        return fn.execute(this._injector);
+    }
+}
 
 export var afterEach: Function = _global.afterEach;
 export var describe: Function = _global.describe;
@@ -43,7 +84,6 @@ function _isPromiseLike(input): boolean {
 function runInTestZone(fnToExecute, finishCallback, failCallback): any {
     var pendingMicrotasks = 0;
     var pendingTimeouts = [];
-
     var ngTestZone = (<Zone>global.zone)
         .fork({
             onError: function(e) { failCallback(e); },
@@ -106,18 +146,18 @@ function _it(jsmFn: Function, name: string, testFn: FunctionWithParamTokens | An
                 setTimeout(done, 0);
             };
             var returnedTestValue =
-                runInTestZone(() => testInjector.execute(testFn), finishCallback, done.fail);
+                runInTestZone(() => testInjector.execute(testFn), finishCallback, chai.expect.fail);
 
             if (testFn.isAsync) {
                 if (_isPromiseLike(returnedTestValue)) {
-                    (<Promise<any>>returnedTestValue).then(null, (err) => { done.fail(err); });
+                    (<Promise<any>>returnedTestValue).then(null, (err) => { chai.expect.fail(err); });
                 } else {
-                    done.fail('Error: injectAsync was expected to return a promise, but the ' +
+                    chai.expect.fail('Error: injectAsync was expected to return a promise, but the ' +
                         ' returned value was: ' + returnedTestValue);
                 }
             } else {
                 if (!(returnedTestValue === undefined)) {
-                    done.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
+                    chai.expect.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
                         'value was: ' + returnedTestValue);
                 }
             }
@@ -140,17 +180,17 @@ export function beforeEach(fn: FunctionWithParamTokens | AnyTestFn): void {
             };
 
             var returnedTestValue =
-                runInTestZone(() => testInjector.execute(fn), finishCallback, done.fail);
+                runInTestZone(() => testInjector.execute(fn), finishCallback, chai.expect.fail);
             if (fn.isAsync) {
                 if (_isPromiseLike(returnedTestValue)) {
-                    (<Promise<any>>returnedTestValue).then(null, (err) => { done.fail(err); });
+                    (<Promise<any>>returnedTestValue).then(null, (err) => { chai.expect.fail(err); });
                 } else {
-                    done.fail('Error: injectAsync was expected to return a promise, but the ' +
+                    chai.expect.fail('Error: injectAsync was expected to return a promise, but the ' +
                         ' returned value was: ' + returnedTestValue);
                 }
             } else {
                 if (!(returnedTestValue === undefined)) {
-                    done.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
+                    chai.expect.fail('Error: inject returned a value. Did you mean to use injectAsync? Returned ' +
                         'value was: ' + returnedTestValue);
                 }
             }
@@ -174,50 +214,10 @@ export function xit(name: string, fn: FunctionWithParamTokens | AnyTestFn,
     return _it(jsmXIt, name, fn, timeOut);
 }
 
-export class TestInjector {
-    platformProviders: Array<Type | Provider | any[]> = [];
-
-    applicationProviders: Array<Type | Provider | any[]> = [];
-
-    private _instantiated: boolean = false;
-
-    private _injector: Injector = null;
-
-    private _providers: Array<Type | Provider | any[]> = [];
-
-    reset() {
-        this._injector = null;
-        this._providers = [];
-        this._instantiated = false;
-    }
-
-    addProviders(providers: Array<Type | Provider | any[]>) {
-        if (this._instantiated) {
-            throw new BaseException('Cannot add providers after test injector is instantiated');
-        }
-        this._providers = ListWrapper.concat(this._providers, providers);
-    }
-
-    createInjector() {
-        var rootInjector = Injector.resolveAndCreate(this.platformProviders);
-        this._injector = rootInjector.resolveAndCreateChild(
-            ListWrapper.concat(this.applicationProviders, this._providers));
-        this._instantiated = true;
-        return this._injector;
-    }
-
-    execute(fn: FunctionWithParamTokens): any {
-        if (!this._instantiated) {
-            this.createInjector();
-        }
-        return fn.execute(this._injector);
-    }
-}
-
 var _testInjector: TestInjector = null;
 
 export function getTestInjector() {
-    if (_testInjector === null) {
+    if (!_testInjector) {
         _testInjector = new TestInjector();
     }
     return _testInjector;
