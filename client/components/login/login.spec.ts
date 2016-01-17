@@ -1,17 +1,17 @@
-import * as chai from 'chai';
-import {describe,it,inject,beforeEachProviders} from '../../util/angular2-mocha-testing';
-import {App} from '../app/app';
-import {Type} from 'angular2/core';
+import * as sinon from 'sinon';
+import {describe,it} from '../../util/angular2-mocha-testing';
+import {Login} from './login';
 
-chai.config.includeStack = true;
+export var localStorage: any = {
+    removeItem: (key: any) => { return; }
+};
 
 describe('Login', () => {
-    beforeEachProviders(() => [App]);
+    sinon.spy(localStorage, 'removeItem');
 
-    it('Test for App to Exist', (done) => {
-        inject([App], (app) => {
-            console.log(app);
-            done();
-        });
+    it('Create compoment', (done) => {
+        var login = new Login();
+        expect(login).should.not.be.null;
+        done();
     });
 });
